@@ -1,6 +1,6 @@
 # ECOR 1042 Lab 3 - Template
 
-
+#I am writing stuff
 # Update 
 __author__ = "Ivan Wang"
 __student_number__ = "101298751"
