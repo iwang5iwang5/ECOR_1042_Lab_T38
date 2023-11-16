@@ -223,14 +223,47 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
     action = filter[0]
     requirement = filter[1]
 
-    if action.lower() == "vendor":
-        machine_vendor_list(filename, requirement)
+    if action.lower() == "all":
+        information = []
+        with open(filename, 'r') as file:
+
+            first_line = file.readline()
+            headers = first_line.strip().split('r')
+
+            for line in file:
+
+                data = {}
+                values = line.strip().split(',')
+
+                for i in range(len(headers)):
+
+                    try:
+
+                        value = int(values[i])
+
+                    except:
+
+                        value = values[i]
+
+                    data[headers[i]] = value
+                
+                information += [data]
+
+    elif action.lower() == "vendor":
+
+        information = machine_vendor_list(filename, requirement)
+
     elif action.lower() == "model":
-        machine_model_list(filename, requirement)
+
+        information = machine_model_list(filename, requirement)
+
     elif action.lower() == "cache":
-        machine_cache_list(filename, requirement)
+
+        information = machine_cache_list(filename, requirement)
+
     elif action.lower() == "prp":
-        machine_prp_list(filename, requirement)
+
+        information = machine_prp_list(filename, requirement)
 
 #==========================================#
 # Place your add_average_main_memory function after this line
