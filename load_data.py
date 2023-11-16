@@ -36,19 +36,6 @@ def machine_vendor_list(filename: str, param: str) -> list[dict]:
     infile.close()
     return result
 
-    #Do not include a main script
-
-#==========================================#
-# Place your machine_model_list function after this line
-
-# ECOR 1042 Lab 3 - Template
-
-
-# Update 
-__author__ = "Ivan Wang"
-__student_number__ = "101298751"
-__team__ = "T038"
-
 #==========================================#
 # Place your machine_model_list function after this line
 def machine_model_list(file_name: str, model: str) -> list[dict]:
