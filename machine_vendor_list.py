@@ -9,7 +9,7 @@ __team__ = "T 38"
 #==========================================#
 
 
-def machine_vendor_list(filename: str, param: str) -> list[{}]:
+def machine_vendor_list(filename: str, param: str) -> list[dict]:
     """
     Return a list of machines that belong to a specifc vendor. Return an empty list if the vendor does not exist.
 
@@ -35,7 +35,3 @@ def machine_vendor_list(filename: str, param: str) -> list[{}]:
             result.append(data)
     infile.close()
     return result
-
-
-vendor = 'bti'
-print(machine_vendor_list('machine.csv', vendor))
