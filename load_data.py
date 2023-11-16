@@ -32,7 +32,15 @@ __team__ = "Sample"
 
 #==========================================#
 # Place your add_average_main_memory function after this line
-
+def add_average_main_memory(machines: list[dict]) ->list[dict]:
+    """Return list of machines with a new entry added to each dictionary.
+    The new entry's key is 'M_AVG' with the value of the average of the memory usage.
+    
+    """
+    for machine in machines:
+        machine['M_AVG'] = (machine['MMAX'] + machine['MMIN']) / 2
+    return machines
+    
 
 
 # Do NOT include a main script in your submission
