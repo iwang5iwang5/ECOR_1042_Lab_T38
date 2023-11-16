@@ -222,9 +222,9 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
     """
     action = filter[0]
     requirement = filter[1]
+    information = []
 
     if action.lower() == "all":
-        information = []
         with open(filename, 'r') as file:
 
             first_line = file.readline()
@@ -264,6 +264,12 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
     elif action.lower() == "prp":
 
         information = machine_prp_list(filename, requirement)
+
+    else:
+
+        print("Invalid Value")
+    
+    return information
 
 #==========================================#
 # Place your add_average_main_memory function after this line
