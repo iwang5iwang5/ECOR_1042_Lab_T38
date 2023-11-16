@@ -195,7 +195,7 @@ def machine_cache_list(filename: str, min_cache: int) -> list[dict]:
                     information = {}
 
                     #Iterate through every attribute
-                    for i in range(len(values)):
+                    for i in range(len(headers)):
 
                         #If the attribute is not cach memory save the information
                         if headers[i] != 'CACH':
@@ -275,11 +275,11 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
     information = []
 
     if action.lower() == "all":
-        
+
         with open(filename, 'r') as file:
 
             first_line = file.readline()
-            headers = first_line.strip().split('r')
+            headers = first_line.strip().split(',')
 
             for line in file:
 
@@ -308,7 +308,7 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
 
         information = machine_model_list(filename, requirement)
 
-    elif action.lower() == "cache":
+    elif action.lower() == "cach":
 
         information = machine_cache_list(filename, requirement)
 
