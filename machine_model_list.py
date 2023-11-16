@@ -62,7 +62,6 @@ def machine_model_list(file_name: str, model: str) -> list[dict]:
                         #make sure
                         if i != 1:
 
-                            
                             try:#try to int casting the line
                                 temp_dict[headers[i]] = int(line[i])
                             except:#if not store value as str
