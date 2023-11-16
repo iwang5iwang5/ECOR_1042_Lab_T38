@@ -133,7 +133,8 @@ def machine_model_list(file_name: str, model: str) -> list[dict]:
 
 #==========================================#
 # Place your load_data function after this line
-
+def load_data(filename: str, filter: tuple) -> list[dict]:
+    pass
 
 #==========================================#
 # Place your add_average_main_memory function after this line
