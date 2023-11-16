@@ -267,6 +267,7 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
     information = []
 
     if action.lower() == "all":
+        
         with open(filename, 'r') as file:
 
             first_line = file.readline()
