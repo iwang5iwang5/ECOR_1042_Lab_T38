@@ -218,7 +218,19 @@ def machine_cache_list(filename: str, min_cache: int) -> list[dict]:
 #==========================================#
 # Place your load_data function after this line
 def load_data(filename: str, filter: tuple) -> list[dict]:
-    pass
+    """
+    """
+    action = filter[0]
+    requirement = filter[1]
+
+    if action.lower() == "vendor":
+        machine_vendor_list(filename, requirement)
+    elif action.lower() == "model":
+        machine_model_list(filename, requirement)
+    elif action.lower() == "cache":
+        machine_cache_list(filename, requirement)
+    elif action.lower() == "prp":
+        machine_prp_list(filename, requirement)
 
 #==========================================#
 # Place your add_average_main_memory function after this line
