@@ -2,10 +2,10 @@
 
 
 # Update "" to list all students contributing to the team work
-__author__ = ""
+__author__ = "Stefan Martincevic, Ivan Wang, Lance Downton, Esosa Ohangbon"
 
 # Update "" with your team (e.g. T102)
-__team__ = "Sample"
+__team__ = "T38"
 
 #==========================================#
 # Place your machine_vendor_list function after this line
