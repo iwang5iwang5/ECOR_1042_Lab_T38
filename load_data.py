@@ -268,7 +268,32 @@ def machine_prp_list(file_name, min_performance):
 #==========================================#
 # Place your load_data function after this line
 def load_data(filename: str, filter: tuple) -> list[dict]:
-    """
+    """Returns list of dictionaries contain each machine that fits the filter given
+    the filename str that contains all the machines and a tuple. The first element of the
+    tuple is a str contain what element is being filtered like "vendor", "model","cach", "prp",
+    or "all". "all" will return a list containing the dictionaries of all the machines without 
+    excluding any colums. If the filter is unknown, then it will print "Invalid Value" and return
+    an empty list. The second contains the filter condition.
+
+    Precondition: len(filename) > 0, len(filter) == 2, type(filter[0]) == <class 'str'>
+
+    >>>load_data("machine.csv", ("vendor", "adviser"))
+    [{'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 'CACH': 256, 'PRP': 198, 'ERP': 199}]
+
+    >>>load_data("machine.csv", ("all", -20))
+    [{'Vendor': 'adviser', 'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 
+        'CACH': 256, 'PRP': 198, 'ERP': 199},
+      {'Vendor': 'amdahl', 'Model': '470v/7', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+        'CACH': 32, 'PRP': 269, 'ERP': 253}, 
+      {'Vendor': 'amdahl', 'Model': '470v/7a', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+        'CACH': 32, 'PRP': 220, 'ERP': 253}, 
+      {another element},
+      ...
+    ]
+
+    >>>load_data("machine.csv", ("wrong thing", -20))
+    Invalid Value
+    []
     """
     action = filter[0]
     requirement = filter[1]
