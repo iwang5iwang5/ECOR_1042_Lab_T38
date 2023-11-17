@@ -349,10 +349,36 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
 
 #==========================================#
 # Place your add_average_main_memory function after this line
-def add_average_main_memory(machines: list[dict]) ->list[dict]:
+def add_average_main_memory(machines: list[dict]) -> list[dict]:
     """Return list of machines with a new entry added to each dictionary.
     The new entry's key is 'M_AVG' with the value of the average of the memory usage.
+
+    Preconditions: machines[i] contains machines[i]['MMax'] and machines[i]['MMin']
     
+    >>>add_average_main_memory([{'Vendor': 'adviser', 'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 
+        'CACH': 256, 'PRP': 198, 'ERP': 199}])
+    
+    [{'Vendor': 'adviser', 'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 
+    'CACH': 256, 'PRP': 198, 'ERP': 199, 'M_AVG': 3128.0}]
+
+    >>>add_average_main_memory([])
+    []
+
+    >>>add_average_main_memory([{'Vendor': 'adviser', 'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 
+        'CACH': 256, 'PRP': 198, 'ERP': 199},
+      {'Vendor': 'amdahl', 'Model': '470v/7', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+        'CACH': 32, 'PRP': 269, 'ERP': 253}, 
+      {'Vendor': 'amdahl', 'Model': '470v/7a', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+        'CACH': 32, 'PRP': 220, 'ERP': 253}
+    ])
+
+    [{'Vendor': 'adviser', 'Model': '32/60', 'MYCT': 125, 'MMIN': 256, 'MMAX': 6000, 
+        'CACH': 256, 'PRP': 198, 'ERP': 199, 'M_AVG': 3128.0}, 
+      {'Vendor': 'amdahl', 'Model': '470v/7', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+        'CACH': 32, 'PRP': 269, 'ERP': 253, 'M_AVG': 20000.0}, 
+      {'Vendor': 'amdahl', 'Model': '470v/7a', 'MYCT': 29, 'MMIN': 8000, 'MMAX': 32000, 
+      'CACH': 32, 'PRP': 220, 'ERP': 253, 'M_AVG': 20000.0}]
+
     """
     for machine in machines:
         machine['M_AVG'] = (machine['MMAX'] + machine['MMIN']) / 2
