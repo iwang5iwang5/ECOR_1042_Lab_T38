@@ -11,7 +11,7 @@ __team__ = "T38"
 # Place your machine_vendor_list function after this line
 def machine_vendor_list(filename: str, param: str) -> list[dict]:
     """
-    Return a list of machines that belong to a specific vendor. Return an empty list if the vendor does not exist.
+    Return a list of machines that belong to a specifc vendor. Return an empty list if the vendor does not exist.
 
     Preconditions: None
 
@@ -22,25 +22,44 @@ def machine_vendor_list(filename: str, param: str) -> list[dict]:
     >>> machine_vendor_list(machine.csv, bti)
     [{'Model': '5000', 'MYCT': 350, 'MMIN': 64, 'MMAX': 64, 'CACH': 0, 'PRP': 10, 'ERP': 15}, {'Model': '8000', 'MYCT': 200, 'MMIN': 512, 'MMAX': 16000, 'CACH': 0, 'PRP': 35, 'ERP': 64}]
     """
+    # Open and read file
     infile = open(filename, "r")
+    
+    # Remove whitespace from elements of the header and splits them into list
     header = infile.readline().strip().split(",")
+    
+    # Initialize list that contains all information about the machines of a vendor
     result = []
+    
+    # Loop that iterates for every line in the file
     for line in infile:
+        
+        # Remove whitespace from elemenst of the specific machine and splits them into list
         line_lst = line.strip().split(",")
+        
+        # Checks to see if the vendor is the vendor entered
         if line_lst[0] == param:
+            
+            # Initializing an empty dictionary for the vendor's information on a specific line
             data = {}
+            
+            # Loop that iterates for the amount of headers
             for i in range(1, len(header)):
-                data[header[i]] = line_lst[i]
+                try:
+                    # Attempt to change machine information to integer
+                    data[header[i]] = int(line_lst[i])
+                except:
+                    # If not, return to default of string
+                    data[header[i]] = line_lst[i]
 
-                if i != 1:
-                    try:
-                        data[header[i]] = int(line_lst[i])
-                    except:
-                        data[header[i]] = line_lst[i]
-
+            # Add the information of the line to teh result
             result.append(data)
+    # Close file
     infile.close()
+    
+    # Return result
     return result
+
 
 #Do not include a main script
 
