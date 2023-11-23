@@ -18,7 +18,6 @@ __team__ = "T38"
 import check
 import load_data
 
-
 def test_return_list_correct_lenght() -> None:
     # Complete the function with your test cases
     check.equal(len(load_data.machine_vendor_list(
