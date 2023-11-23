@@ -381,7 +381,7 @@ def add_average_main_memory(machines: list[dict]) -> list[dict]:
 
     """
     for machine in machines:
-        machine['M_AVG'] = (machine['MMAX'] + machine['MMIN']) / 2
+        machine['M_AVG'] = round((machine['MMAX'] + machine['MMIN']) / 2,2)
     return machines
     
 
