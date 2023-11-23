@@ -45,19 +45,19 @@ def test_add_average():
     fail_message = "INFO: add_average_main_memory does not add the correct value to the dictionary"
     mmin = data("machine-test.csv", ("vendor", "apollo"))[0]["MMIN"]
     mmax = data("machine-test.csv", ("vendor", "apollo"))[0]["MMAX"]
-    check.within(average(data("machine-test.csv", ("vendor", "apollo")))[0]["M_AVG"], (mmin + mmax) / 2, 0.0000001, fail_message)
+    check.equal(average(data("machine-test.csv", ("vendor", "apollo")))[0]["M_AVG"], round((mmin + mmax) / 2, 2), fail_message)
     mmin = data("machine-test.csv", ("model", "Jul-65"))[0]["MMIN"]
     mmax = data("machine-test.csv", ("model", "Jul-65"))[0]["MMAX"]
-    check.within(average(data("machine-test.csv", ("model", "Jul-65")))[0]["M_AVG"], (mmin + mmax) / 2, 0.0000001, fail_message)
+    check.equal(average(data("machine-test.csv", ("model", "Jul-65")))[0]["M_AVG"], round((mmin + mmax) / 2, 2), fail_message)
     mmin = data("machine-test.csv", ("cach", 130))[0]["MMIN"]
     mmax = data("machine-test.csv", ("cach", 130))[0]["MMAX"]
-    check.within(average(data("machine-test.csv", ("cach", 130)))[0]["M_AVG"], (mmin + mmax) / 2, 0.0000001, fail_message)
+    check.equal(average(data("machine-test.csv", ("cach", 130)))[0]["M_AVG"],round((mmin + mmax) / 2, 2), fail_message)
     mmin = data("machine-test.csv", ("prp", 700))[0]["MMIN"]
     mmax = data("machine-test.csv", ("prp", 700))[0]["MMAX"]
-    check.within(average(data("machine-test.csv", ("prp", 700)))[0]["M_AVG"], (mmin + mmax) / 2, 0.0000001, fail_message)
+    check.equal(average(data("machine-test.csv", ("prp", 700)))[0]["M_AVG"], round((mmin + mmax) / 2, 2), fail_message)
     mmin = data("machine-test.csv", ("all", "I am very cool :)"))[0]["MMIN"]
     mmax = data("machine-test.csv", ("all", "I am very cool :)"))[0]["MMAX"]
-    check.within(average(data("machine-test.csv", ("all", "I am very cool :)")))[0]["M_AVG"], (mmin + mmax) / 2, 0.0000001, fail_message)
+    check.equal(average(data("machine-test.csv", ("all", "I am very cool :)")))[0]["M_AVG"], round((mmin + mmax) / 2, 2), fail_message)
 
     # Get the summary of all checks
     check.summary()
