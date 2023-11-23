@@ -23,8 +23,6 @@ def test_add_average():
     
     data = load_data.load_data
     average = load_data.add_average_main_memory
-    tests = [(("vendor", "amdahl"), ("model", "580-5840"), ("cach", 65), ("prp", 300), ("all", "I am very cool :)")),
-             (("vendor", "apollo"), ("model", "Jul-65"), ("cach", 130), ("prp", 700), ("all", "I am very cool :)"))]
 
     # Check list length
     fail_message = "INFO: add_average_main_memory changed the length of the list"
