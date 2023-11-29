@@ -34,10 +34,9 @@ def sort_prp_selection(machines: list[dict], order: str) -> list[dict]:
     """
 
     #check if all machines contain "PRP" key
-    for machine in machines:
-        if not "PRP" in machine: #check if key is in each machine
-            print('“PRP” key is not present.') #print if does not have "PRP"
-            return machines #return original list
+    if len(machines) > 0 and not "PRP" in machines[0]: #check if key is in each machine
+        print('“PRP” key is not present.') #print if does not have "PRP"
+        return machines #return original list
     
     if order == "A": #check sort order
 
