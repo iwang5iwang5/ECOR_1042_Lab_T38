@@ -234,6 +234,17 @@ def sort(machines: list[dict], order: str, attribute: str):
     and attribute to sort by. It can sort by the attributes (“CACH”, “PRP”, “M_AVG”, “MYCT”)
 
     Precondition: order == "A" or "D" 
+
+    >>>sort([{"Model":"GP"},{"Model":"MS"}], "D", "Model")
+    Cannot be sorted by "Model"
+    [{'Model': 'GP'}, {'Model': 'MS'}]
+
+    >>>sort([{"CACH":10,"Model":"GP"},{"CACH":19.1,"Model":"MS"}], "D", "CACH")
+    [{'CACH': 19.1, 'Model': 'MS'}, {'CACH': 10, 'Model': 'GP'}]
+
+    >>>sort([{"CACH":5,"Model":"T"},{"CACH":2,"Model":"S"}], "A", "M_AVG")
+    "M_AVG" key is not present
+    [{'CACH': 5, 'Model': 'T'}, {'CACH': 2, 'Model': 's'}]
     """
     if attribute == "CACH":
         return sort_cache_bubble(machines, order)
@@ -244,7 +255,9 @@ def sort(machines: list[dict], order: str, attribute: str):
     elif attribute == "MYCT":
         return sort_myct_bubble(machines, order)
     else:
-        print("Cannot be sorted by ", attribute)
+        print('Cannot be sorted by "' + attribute + '"')
         return machines
+
+print(sort([{"CACH":10,"Model":"GP"},{"CACH":19.1,"Model":"MS"}],"D","M_AVG"))
 
 # Do NOT include a main script in your submission
