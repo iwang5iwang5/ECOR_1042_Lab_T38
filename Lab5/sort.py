@@ -231,10 +231,20 @@ def sort_myct_bubble(data: list[dict], order: str) -> list:
 # Place your sort function after this line
 def sort(machines: list[dict], order: str, attribute: str):
     """Returns sorted list of dictionaries given the list of machines, the order,
-    and attribute to sort by.
+    and attribute to sort by. It can sort by the attributes (“CACH”, “PRP”, “M_AVG”, “MYCT”)
 
-
+    Precondition: order == "A" or "D" 
     """
-    
+    if attribute == "CACH":
+        return sort_cache_bubble(machines, order)
+    elif attribute == "PRP":
+        return sort_prp_selection(machines, order)
+    elif attribute == "M_AVG":
+        return sort_m_avg_insertion(machines, order)
+    elif attribute == "MYCT":
+        return sort_myct_bubble(machines, order)
+    else:
+        print("Cannot be sorted by ", attribute)
+        return machines
 
 # Do NOT include a main script in your submission
