@@ -257,7 +257,4 @@ def sort(machines: list[dict], order: str, attribute: str):
     else:
         print('Cannot be sorted by "' + attribute + '"')
         return machines
-
-print(sort([{"CACH":10,"Model":"GP"},{"CACH":19.1,"Model":"MS"}],"D","M_AVG"))
-
 # Do NOT include a main script in your submission
