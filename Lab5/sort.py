@@ -230,7 +230,7 @@ def sort_myct_bubble(data: list[dict], order: str) -> list:
 #==========================================#
 # Place your sort function after this line
 def sort(machines: list[dict], order: str, attribute: str):
-    """Returns sorted list of dictionaries given the list of machines, the order,
+    """Return sorted list of dictionaries given the list of machines, the order,
     and attribute to sort by. It can sort by the attributes (“CACH”, “PRP”, “M_AVG”, “MYCT”)
 
     Precondition: order == "A" or "D" 
