@@ -12,14 +12,21 @@ __team__ = "T-038"
 #==========================================#
 # Place your script for your text_UI after this line
 
-def get_command():
+# Import load data and set it up for easier use later
+import load_data
+l_d = load_data.load_data
+m_avg = load_data.add_average_main_memory
+
+import sort
+
+def get_command() -> None:
     """
     """
     # Set up
-    valid_command = False
+    exit_command = False
     data_loaded = False
 
-    while not valid_command:
+    while not exit_command:
 
         # Inform user of available commands
         print("The available commands are:")
@@ -35,11 +42,17 @@ def get_command():
 
         # Load data
         if command == "l":
-            load_data_command()
+            data_loaded = load_data_command()
+        
+        elif command == "s":
+            sort_data()
 
         break
 
-def load_data_command():
+    print(data_loaded)
+
+
+def load_data_command() -> list[dict]:
     """
     """
     # Promp user to get name of file to load
@@ -59,9 +72,24 @@ def load_data_command():
         print("Invalid filter key.")
     
     # Get attribute value
-    if attribute_filter != "all":
+    if attribute_filter == "model" or attribute_filter == "vendor":
 
         # Prompt user for attribute value
+        attribute_value = input("Please enter the value of the attribute: ")
+
+    elif attribute_filter != "all":
+
+        # Prompt user for attribute value
+        attribute_value = int(input("Please enter the value of the attribute: "))
+
+    # Inform user that data was loaded and return the loaded data
+    print("Data loaded")
+    return m_avg(l_d(filename, (attribute_filter, attribute_value)))
+
+
+def sort_data(data: list[dict]) -> None:
+    """
+    """
 
 
 get_command()
