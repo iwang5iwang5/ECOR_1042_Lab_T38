@@ -42,16 +42,26 @@ def get_command():
 def load_data_command():
     """
     """
-    # Get name of file to load
-    filename = input("Please enter the name of the file: ").lower()
+    # Promp user to get name of file to load
+    filename = input("Please enter the name of the file: ")
 
     # Get filter
-    valid_filters = {"all", "model", "vendor", "prp", "cach"}
-    attribute_filter = ""
+    while True:
 
-    # Wait for filter to be valid
-    while attribute_filter not in valid_filters:
+        # Promp user for a filter
+        attribute_filter = input("Please enter the attribute to use as a filter: ").lower()
+        
+        # Check if filter is valid and leave loop if it is
+        if attribute_filter == "cach" or attribute_filter == "model" or attribute_filter == "prp" or attribute_filter == "vendor" or attribute_filter == "all":
+            break
+        
+        # Inform user of an invaled filter inputed
+        print("Invalid filter key.")
+    
+    # Get attribute value
+    if attribute_filter != "all":
 
+        # Prompt user for attribute value
 
 
 get_command()

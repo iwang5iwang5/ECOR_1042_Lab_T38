@@ -13,7 +13,7 @@ def sort_cache_bubble(dict_list: list, sorting_order: str) -> list:
     """
     Return a list of machines' dictionaries by the "CACH" attribute, using bubble sort, in either an ascending or descending order.
 
-    Preconditions: None.
+    Preconditions: "A" or order == "D".
 
     >>> sort_cache_bubble([{'CACH': 12, 'Model': 'zt'}, {'CACH': 19, 'Model': 'MS'}, {'CACH': 10, 'Model': 'GP'}, {'CACH': 13, 'Model': 'PR'}], "A")
     [{'CACH': 10, 'Model': 'GP'}, {'CACH': 12, 'Model': 'zt'}, {'CACH': 13, 'Model': 'PR'}, {'CACH': 19, 'Model': 'MS'}]
@@ -230,7 +230,7 @@ def sort_myct_bubble(data: list[dict], order: str) -> list:
 #==========================================#
 # Place your sort function after this line
 def sort(machines: list[dict], order: str, attribute: str):
-    """Returns sorted list of dictionaries given the list of machines, the order,
+    """Return sorted list of dictionaries given the list of machines, the order,
     and attribute to sort by. It can sort by the attributes (“CACH”, “PRP”, “M_AVG”, “MYCT”)
 
     Precondition: order == "A" or "D" 
