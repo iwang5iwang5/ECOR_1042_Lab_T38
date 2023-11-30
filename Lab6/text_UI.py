@@ -16,7 +16,6 @@ def get_command():
     """
     """
     # Set up
-    valid_commands = {"l", "s", "c", "h", "e"}
     valid_command = False
     data_loaded = False
 
@@ -34,14 +33,9 @@ def get_command():
         # Get user command and insure it is lowercase
         command = input("Please type your command: ").lower()
 
-        # Check if inputted command is valid
-        if command not in valid_commands:
-            print("Invalid command.")
-            continue
-        
         # Load data
-        elif command == "l":
-            
+        if command == "l":
+            load_data_command()
 
         break
 
