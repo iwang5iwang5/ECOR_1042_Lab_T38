@@ -41,7 +41,7 @@ def sort_myct_bubble(data: list[dict], order: str) -> list:
 
     # Loop to access each data element
     for i in range(len(data)):
-        # Loop to compare array elements
+        # Loop to compare data elements
         for j in range(0, len(data) - i - 1):
 
             # Ascending order
