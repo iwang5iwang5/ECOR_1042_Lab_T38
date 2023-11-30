@@ -13,7 +13,7 @@ def sort_cache_bubble(dict_list: list, sorting_order: str) -> list:
     """
     Return a list of machines' dictionaries by the "CACH" attribute, using bubble sort, in either an ascending or descending order.
 
-    Preconditions: None.
+    Preconditions: "A" or order == "D".
 
     >>> sort_cache_bubble([{'CACH': 12, 'Model': 'zt'}, {'CACH': 19, 'Model': 'MS'}, {'CACH': 10, 'Model': 'GP'}, {'CACH': 13, 'Model': 'PR'}], "A")
     [{'CACH': 10, 'Model': 'GP'}, {'CACH': 12, 'Model': 'zt'}, {'CACH': 13, 'Model': 'PR'}, {'CACH': 19, 'Model': 'MS'}]
