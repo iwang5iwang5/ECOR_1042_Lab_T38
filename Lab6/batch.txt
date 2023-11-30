@@ -1,0 +1,3 @@
+L;machine.csv;Vendor;amdahl
+S;CACH;D;N
+H;PRP
