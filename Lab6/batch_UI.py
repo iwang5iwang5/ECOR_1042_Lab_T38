@@ -24,7 +24,7 @@ def load_data_command(e:list):
     else:
         data = load_data.add_average_main_memory(load_data.load_data(e[1], (e[2],-1)))
     if len(data) > 0:
-        print("Data loaded")
+        # print("Data loaded")
         return data
     return data
 
@@ -36,7 +36,7 @@ def load_data_command(e:list):
 
 def sort_command(e:list, data: list[dict]):
     if data == []:
-        print("File not loaded. Please, load a file first.")
+        # print("File not loaded. Please, load a file first.")
         return []
     if e[3].lower() == "n":
         return sort.sort(data,e[2],e[1])
@@ -51,7 +51,7 @@ with open(filename, "r") as batch:
     commands = batch.read().strip().split("\n")
     for i in range(len(commands)):
         commands[i] = commands[i].strip().split(";")
-    print(commands)
+    # print(commands)
 
     not_exit = True
     i = 0
