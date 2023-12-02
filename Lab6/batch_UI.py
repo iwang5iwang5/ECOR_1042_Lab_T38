@@ -17,13 +17,33 @@ import load_data
 import sort
 
 def load_data_command(e:list):
-    pass
-def curve_fit_command(e:list):
-    pass
-def histogram_command(e:list):
-    pass
-def sort_command(e:list):
-    pass
+    if not e[2].lower() in ["vendor", "model","cach", "prp", "all"]:
+        return []
+    if len(e) == 4:
+        data = load_data.add_average_main_memory(load_data.load_data(e[1], (e[2],e[3]))) 
+    else:
+        data = load_data.add_average_main_memory(load_data.load_data(e[1], (e[2],-1)))
+    if len(data) > 0:
+        print("Data loaded")
+        return data
+    return data
+
+# def curve_fit_command(e:list):
+    # return curve_fit.curvefit()
+
+# def histogram_command(e:list):
+#     return histogram.histogram()
+
+def sort_command(e:list, data: list[dict]):
+    if data == []:
+        print("File not loaded. Please, load a file first.")
+        return []
+    if e[3].lower() == "n":
+        return sort.sort(data,e[2],e[1])
+    elif e[3].lower() == 'y':
+        data = sort.sort(data,e[2],e[1])
+        print(data)
+        return data
 
 # filename = input("Please enter the name of the file where your commands are stored: ")
 filename = "batch.txt"
@@ -35,16 +55,19 @@ with open(filename, "r") as batch:
 
     not_exit = True
     i = 0
+    data = []
 
     while i < len(commands) and not_exit:
-        if commands[i][0] == "L":
-            load_data_command(commands[i])
-        elif commands[i][0] == "S":
-            sort_command(commands[i])
-        elif commands[i][0] == "C":
-            curve_fit_command(commands[i])
-        elif commands[i][0] == "H":
-            histogram_command(commands[i])
-        elif commands[i][0] == "E":
+        if commands[i][0].upper() == "L":
+            data = load_data_command(commands[i])
+        elif commands[i][0].upper() == "S":
+            sort_command(commands[i], data)
+        # elif commands[i][0].upper() == "C":
+        #     curve_fit_command(commands[i])
+        # elif commands[i][0].upper() == "H":
+        #     histogram_command(commands[i])
+        elif commands[i][0].upper() == "E":
             not_exit = False
+        else:
+            print("Invalid command.")
         i += 1
