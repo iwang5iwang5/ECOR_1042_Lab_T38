@@ -72,6 +72,10 @@ def get_command() -> None:
         elif not data_loaded and (command == "l" or command == "s" or command == "c" or command == "h"):
             print("File not loaded. Please, load a file first.")
 
+        # Invalid command before data loaded
+        elif not data_loaded:
+            print("No such command")
+
         # Invalid command
         else:
             print("Invalid command")
