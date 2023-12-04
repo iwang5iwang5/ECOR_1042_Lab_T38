@@ -17,9 +17,11 @@ import load_data
 data_loader = load_data.load_data
 m_avg = load_data.add_average_main_memory
 
-# Import sort and set it up for easier use later
-import sort
-data_sorter = sort.sort
+# Import the sort function from the sort file
+from sort import sort
+
+# Import the histogram function from the histogram file
+from histogram import histogram
 
 def get_command() -> None:
     """
@@ -147,7 +149,7 @@ def sort_data(data: list[dict], loaded_type: str) -> list[dict]:
             print("Invalid order.")
         
     # Sort the loaded data
-    sorted_data = data_sorter(data, sorting_order, sorting_attribute)
+    sorted_data = sort(data, sorting_order, sorting_attribute)
 
     # Prompt user on if they want to have sorted data displayed
     display_data = input("Data Sorted. Do you want to display the data?: ").lower()
