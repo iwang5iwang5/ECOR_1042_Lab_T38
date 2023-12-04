@@ -182,7 +182,7 @@ def curve_fit_data(data: list[dict], loaded_type: str) -> None:
 
         fit_order = input("Please enter the order of the polynomial to be fitted: ")
 
-        if fit_order.isdecimal() and :
+        if fit_order.isdecimal():
             fit_order = int(fit_order)
 
             if fit_order < len(data):
