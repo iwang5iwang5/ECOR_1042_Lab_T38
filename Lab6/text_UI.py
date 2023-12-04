@@ -127,7 +127,7 @@ def sort_data(data: list[dict], loaded_type: str) -> list[dict]:
         
         # Attribute is not present
         elif sorting_attribute == loaded_type:
-            print("Attribute {} is not present.".format(loaded_type))
+            print("Attribute {} is not present in the loaded data.".format(loaded_type))
 
         # Inform user of an invaled value attribute
         else:
@@ -165,12 +165,54 @@ def sort_data(data: list[dict], loaded_type: str) -> list[dict]:
 def curve_fit_data(data: list[dict], loaded_type: str) -> None:
     """
     """
-    pass
+    
+    valid_attribute = False
+    while not valid_attribute:
+        
+        fit_attribute = input("Please enter the attribute you want to use to find the best fir for M_AVG: ")
 
+        if fit_attribute != loaded_type and (fit_attribute == "MYCT" or fit_attribute == "MMIN" or fit_attribute == "MMAX" or fit_attribute == "CACH" or fit_attribute == "PRP" or fit_attribute == "ERP" or fit_attribute == "M_AVG"):
+            valid_attribute = True
+
+        else:
+            print("Invalid attribute.")
+
+    valid_order = False
+    while not valid_order:
+
+        fit_order = input("Please enter the order of the polynomial to be fitted: ")
+
+        if fit_order.isdecimal() and :
+            fit_order = int(fit_order)
+
+            if fit_order < len(data):
+                valid_order = True
+
+            else:
+                print("Inputted order is too large.")
+            
+        else:
+            print("Invalid order.")
+
+    fitted_curve = "Curve fit function here"
+    print(fitted_curve)
+        
 
 def histogram_of_data(data: list[dict], loaded_type: str) -> None:
     """
     """
-    pass
+
+    valid_attribute = False
+    while not valid_attribute:
+
+        histogram_attribute = input("Please enter the attribute you want to use for plotting: ")
+
+        if loaded_type != histogram_attribute and (histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
+            valid_attribute = True
+
+        else:
+            print("Invalid attribute.")
+
+    histogram(data, histogram_attribute)
 
 get_command()
