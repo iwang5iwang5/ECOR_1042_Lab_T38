@@ -23,6 +23,9 @@ from sort import sort
 # Import the histogram function from the histogram file
 from histogram import histogram
 
+# Import the curve_fit function from the curve_fit file
+from curve_fit import curve_fit
+
 def get_command() -> None:
     """
     """
@@ -194,7 +197,7 @@ def curve_fit_data(data: list[dict], loaded_type: str) -> None:
         else:
             print("Invalid order.")
 
-    fitted_curve = "Curve fit function here"
+    fitted_curve = curve_fit(fit_attribute, fit_order)
     print(fitted_curve)
         
 
