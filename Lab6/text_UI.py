@@ -54,15 +54,15 @@ def get_command() -> None:
         
         # Sort data
         elif command == "s" and data_loaded:
-            data_loaded = sort_data(data_loaded, loaded_type)
+            data_loaded = sort_data_command(data_loaded, loaded_type)
 
         # Curve fit data
         elif command == "c" and data_loaded:
-            curve_fit_data(data_loaded, loaded_type)
+            curve_fit_data_command(data_loaded, loaded_type)
 
         # Make histogram with data
         elif command == "h" and data_loaded:
-            histogram_of_data(data_loaded, loaded_type)
+            histogram_of_data_command(data_loaded, loaded_type)
 
         # Exit program
         elif command == "e" and data_loaded:
@@ -118,7 +118,7 @@ def load_data_command() -> (list[dict], str):
     return (m_avg(data_loader(filename, (attribute_filter, attribute_value))), attribute_filter)
 
 
-def sort_data(data: list[dict], loaded_type: str) -> list[dict]:
+def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
     """
     """
     # Get attribute to sort by
@@ -169,7 +169,7 @@ def sort_data(data: list[dict], loaded_type: str) -> list[dict]:
     return sorted_data
 
 
-def curve_fit_data(data: list[dict], loaded_type: str) -> None:
+def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
     """
     """
     
@@ -205,7 +205,7 @@ def curve_fit_data(data: list[dict], loaded_type: str) -> None:
     print(fitted_curve)
         
 
-def histogram_of_data(data: list[dict], loaded_type: str) -> None:
+def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
     """
     """
 
