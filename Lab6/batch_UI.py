@@ -31,8 +31,8 @@ def load_data_command(e:list):
 # def curve_fit_command(e:list):
     # return curve_fit.curvefit()
 
-# def histogram_command(e:list):
-#     return histogram.histogram()
+def histogram_command(e:list, machines:list[dict]):
+    return histogram.histogram(machines,e[1])
 
 def sort_command(e:list, data: list[dict]):
     if data == []:
@@ -64,8 +64,8 @@ with open(filename, "r") as batch:
             sort_command(commands[i], data)
         # elif commands[i][0].upper() == "C":
         #     curve_fit_command(commands[i])
-        # elif commands[i][0].upper() == "H":
-        #     histogram_command(commands[i])
+        elif commands[i][0].upper() == "H":
+            histogram_command(commands[i], data)
         elif commands[i][0].upper() == "E":
             not_exit = False
         else:
