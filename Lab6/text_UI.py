@@ -127,12 +127,6 @@ def load_data_command() -> (list[dict], str):
         # Prompt user for attribute value
         attribute_value = input("Please enter the value of the attribute: ")
 
-        if attribute_filter == "MODEL":
-            attribute_filter = "Model"
-
-        else:
-            attribute_filter = "Vendor"
-
     elif attribute_filter != "ALL":
 
         # Prompt user for attribute value
