@@ -73,7 +73,7 @@ def get_command() -> list[dict]:
             histogram_of_data_command(data_loaded, loaded_type)
 
         # Exit program
-        elif command == "e" and data_loaded:
+        elif command == "e":
             exit_command = True
 
         # Try to manipulate data without loading any
