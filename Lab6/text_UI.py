@@ -56,7 +56,6 @@ def get_command() -> list[dict]:
         # Get user command
         command = input("Please type your command: ").lower()
 
-        print(command)
         # Load data
         if command == "l":
             data_loaded, loaded_type = load_data_command()
@@ -247,7 +246,7 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
     valid_attribute = False
     while not valid_attribute:
 
-        histogram_attribute = input("Please enter the attribute you want to use for plotting: ")
+        histogram_attribute = input("Please enter the attribute you want to use for plotting: ").upper()
 
         if loaded_type != histogram_attribute and (histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
             valid_attribute = True
