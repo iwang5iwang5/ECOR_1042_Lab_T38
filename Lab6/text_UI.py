@@ -243,8 +243,6 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> str:
 
     fitted_curve = curve_fit(fit_attribute, fit_order)
     print(fitted_curve)
-
-    return fitted_curve
         
 
 def histogram_of_data_command(data: list[dict], loaded_type: str) -> int:
@@ -262,8 +260,6 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> int:
         else:
             print("Invalid attribute.")
 
-    max_val = histogram(data, histogram_attribute)
-
-    return max_val
+    histogram(data, histogram_attribute)
 
 get_command()
