@@ -28,7 +28,7 @@ from curve_fit import curve_fit
 #def curve_fit(e, a):
 #    return f"yes I like {e} and {a}"
 
-def get_command() -> None:
+def get_command() -> list[dict]:
     """Prompts the user for input on what command they would like to run.
     These commands allow the user to:
         - Load data from a csv file, the input for this command is "L"
