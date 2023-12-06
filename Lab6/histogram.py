@@ -190,7 +190,9 @@ def histogram(dict_list: list, attribute: str) -> int:
     data = []
 
     # setup plot title and y axis title
+    plt.figure('Figure Histogram')
     plt.ylabel('Count')
+    plt.xlabel('Value')
     plt.title('Histogram of ' + attribute)
 
     # Checking to see if the key exists and if they are integers
@@ -211,6 +213,7 @@ def histogram(dict_list: list, attribute: str) -> int:
 
     # Plot data
     plt.bar(keys, data)
+    plt.show()
 
     # Return result
     return result
