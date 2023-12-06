@@ -25,8 +25,6 @@ from histogram import histogram
 
 # Import the curve_fit function from the curve_fit file
 from curve_fit import curve_fit
-#def curve_fit(e, a):
-#    return f"yes I like {e} and {a}"
 
 def get_command() -> list[dict]:
     """Prompts the user for input on what command they would like to run.
