@@ -122,12 +122,18 @@ def load_data_command() -> (list[dict], str):
             print("Invalid filter key.")
     
     # Get attribute value
-    if attribute_filter == "model" or attribute_filter == "vendor":
+    if attribute_filter == "MODEL" or attribute_filter == "VENDOR":
 
         # Prompt user for attribute value
         attribute_value = input("Please enter the value of the attribute: ")
 
-    elif attribute_filter != "all":
+        if attribute_filter == "MODEL":
+            attribute_filter = "Model"
+
+        else:
+            attribute_filter = "Vendor"
+
+    elif attribute_filter != "ALL":
 
         # Prompt user for attribute value
         attribute_value = int(input("Please enter the value of the attribute: "))
