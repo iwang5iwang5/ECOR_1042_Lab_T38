@@ -56,6 +56,7 @@ def get_command() -> list[dict]:
         # Get user command
         command = input("Please type your command: ").lower()
 
+        print(command)
         # Load data
         if command == "l":
             data_loaded, loaded_type = load_data_command()
