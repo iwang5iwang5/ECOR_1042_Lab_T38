@@ -90,6 +90,8 @@ def get_command() -> None:
         else:
             print("Invalid command")
 
+    return data_loaded
+
 
 def load_data_command() -> (list[dict], str):
     """Return a tuple containing two elements. The first element is
