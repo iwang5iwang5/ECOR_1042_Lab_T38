@@ -201,7 +201,7 @@ def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
     return sorted_data
 
 
-def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
+def curve_fit_data_command(data: list[dict], loaded_type: str) -> str:
     """Display the best fitting polynomial equation for M_AVG compared to
     a different attribute.
 
@@ -243,9 +243,11 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
 
     fitted_curve = curve_fit(fit_attribute, fit_order)
     print(fitted_curve)
+
+    return fitted_curve
         
 
-def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
+def histogram_of_data_command(data: list[dict], loaded_type: str) -> int:
     """
     """
 
@@ -260,6 +262,8 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
         else:
             print("Invalid attribute.")
 
-    histogram(data, histogram_attribute)
+    max_val = histogram(data, histogram_attribute)
+
+    return max_val
 
 get_command()
