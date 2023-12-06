@@ -25,6 +25,8 @@ from histogram import histogram
 
 # Import the curve_fit function from the curve_fit file
 from curve_fit import curve_fit
+#def curve_fit(e, a):
+#    return f"yes I like {e} and {a}"
 
 def get_command() -> None:
     """Prompts the user for input on what command they would like to run.
@@ -208,7 +210,7 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
     valid_attribute = False
     while not valid_attribute:
         
-        fit_attribute = input("Please enter the attribute you want to use to find the best fir for M_AVG: ")
+        fit_attribute = input("Please enter the attribute you want to use to find the best fit for M_AVG: ").upper()
 
         if fit_attribute != loaded_type and (fit_attribute == "MYCT" or fit_attribute == "MMIN" or fit_attribute == "MMAX" or fit_attribute == "CACH" or fit_attribute == "PRP" or fit_attribute == "ERP" or fit_attribute == "M_AVG"):
             valid_attribute = True
@@ -226,6 +228,9 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
 
             if fit_order < len(data) and fit_order > 0:
                 valid_order = True
+
+            else:
+                print("Invalid order.")
             
         else:
             print("Invalid order.")
