@@ -222,8 +222,8 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
         # Prompt user for the order
         fit_order = input("Please enter the order of the polynomial to be fitted: ")
 
-        # Check if user input is a decimal number
-        if fit_order.isdecimal():
+        # Check if user input can be converted to an integer
+        try:
             fit_order = int(fit_order)
 
             # Insure that the order is a valid order for the data loaded
@@ -234,8 +234,8 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
             else:
                 print("Invalid order.")
 
-        # Inform user of an invalid order  
-        else:
+        # Inform user of an invalid order
+        except:
             print("Invalid order.")
 
     # Get and print the polynomial equation
