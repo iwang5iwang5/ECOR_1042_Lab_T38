@@ -260,6 +260,6 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
         else:
             print("Invalid attribute.")
 
-    temp = histogram.histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings)
+    temp = histogram.histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings), need to fix loaded data to do this
 
 get_command()
