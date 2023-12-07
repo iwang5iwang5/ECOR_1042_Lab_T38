@@ -130,6 +130,10 @@ def load_data_command() -> (list[dict], str):
         # Prompt user for attribute value
         attribute_value = int(input("Please enter the value of the attribute: "))
 
+    # Give the attribute value a placeholder value
+    elif attribute_filter == "ALL":
+        attribute_value = "If you see this you are super cool :D"
+
     # Inform user that data was loaded and return the loaded data
     print("Data loaded")
     return (m_avg(data_loader(filename, (attribute_filter, attribute_value))), attribute_filter)
