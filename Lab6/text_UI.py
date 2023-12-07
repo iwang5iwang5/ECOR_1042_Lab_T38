@@ -248,12 +248,18 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
 
         histogram_attribute = input("Please enter the attribute you want to use for plotting: ").upper()
 
-        if loaded_type != histogram_attribute and (histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
+        if histogram_attribute == "VENDOR":
+            histogram_attribute = "Vendor"
+        
+        elif histogram_attribute == "MODEL":
+            histogram_attribute = "Model"
+
+        if loaded_type != histogram_attribute and (histogram_attribute == "Model" or histogram_attribute == "Vendor" or histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
             valid_attribute = True
 
         else:
             print("Invalid attribute.")
 
-    histogram(data, histogram_attribute)
+    temp = histogram(data, histogram_attribute) # Vendor and Model not working ;-;
 
 get_command()
