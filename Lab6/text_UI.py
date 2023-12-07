@@ -34,8 +34,6 @@ def get_command() -> list[dict]:
         - Get a polynomial equation from the loaded data, the input for this command is "C"
         - Display a histogram using the loaded data, the input for this command is "H"
         - Exit the program, the input for this command is "E"
-
-    *Examples*
     """
     # Set up
     exit_command = False
@@ -100,8 +98,6 @@ def load_data_command() -> (list[dict], str):
     These arguments are the following:
         - Attribute to use as a filter when loading the data
         - The value of the filter used to load the data
-
-    *Examples*
     """
     # Prompt user to get name of file to load
     filename = input("Please enter the name of the file: ")
@@ -144,8 +140,6 @@ def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
     These arguments are the following:
         - Attribute for which the list will be sorted by
         - The order that the list will be sorted in (Ascending or Descending)
-
-    *Examples*
     """
     # Get attribute to sort by
     valid_attribute = False
@@ -203,8 +197,6 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
     These arguments are the following:
         - 
         - 
-
-    *Examples*
     """
     
     valid_attribute = False
