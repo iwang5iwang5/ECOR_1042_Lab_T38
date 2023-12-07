@@ -98,7 +98,11 @@ def machine_model_list(file_name: str, model: str) -> list[dict]:
                         line[i] = line[i].strip()
                         
                         #make sure
-                        if i != 1:
+                        if i == 0:
+                            
+                            temp_dict[headers[i]] = line[i]
+
+                        elif i != 1:
 
                             try:#try to int casting the line
                                 temp_dict[headers[i]] = int(line[i])
@@ -200,14 +204,20 @@ def machine_cache_list(filename: str, min_cache: int) -> list[dict]:
                         #If the attribute is not cach memory save the information
                         if headers[i] != 'CACH':
 
-                            #Try to convert the value to an integer
-                            try:
-
-                                value = int(values[i])
-
-                            except:
+                            if i == 0 or i == 1:
 
                                 value = values[i]
+
+                            else:
+
+                            #Try to convert the value to an integer
+                                try:
+
+                                    value = int(values[i])
+
+                                except:
+
+                                    value = values[i]
 
                             #Add the information to the dictionary
                             information[headers[i]] = value
@@ -254,10 +264,13 @@ def machine_prp_list(file_name, min_performance):
             if int(values[6]) >= min_performance:
                 for i in range(len(headers)):
                     if headers[i] != 'PRP':
-                        try:
-                            value = int(values[i])
-                        except:
+                        if i == 0 or i == 1:
                             value = values[i]
+                        else:
+                            try:
+                                value = int(values[i])
+                            except:
+                                value = values[i]
                         machine[headers[i]] = value
                 machines += [machine]
 

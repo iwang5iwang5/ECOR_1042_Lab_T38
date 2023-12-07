@@ -248,18 +248,18 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
 
         histogram_attribute = input("Please enter the attribute you want to use for plotting: ").upper()
 
-        if histogram_attribute == "VENDOR":
-            histogram_attribute = "Vendor"
-        
-        elif histogram_attribute == "MODEL":
-            histogram_attribute = "Model"
-
-        if loaded_type != histogram_attribute and (histogram_attribute == "Model" or histogram_attribute == "Vendor" or histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
+        if loaded_type != histogram_attribute and (histogram_attribute == "MODEL" or histogram_attribute == "VENDOR" or histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
             valid_attribute = True
+
+            if histogram_attribute == "VENDOR":
+                histogram_attribute = "Vendor"
+        
+            elif histogram_attribute == "MODEL":
+                histogram_attribute = "Model"
 
         else:
             print("Invalid attribute.")
-
+                                                        # vvvv Fixed
     temp = histogram.histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings), need to fix loaded data to do this
 
 get_command()
