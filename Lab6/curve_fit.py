@@ -16,7 +16,7 @@ __team__ = "T-038"
 import numpy as np
 
 def curve_fit(dict_list: list, attribute: str, degree: int):
-     """
+    """
     Return the equation of a curve that best fits when given a data set.
     
     Parameters:
