@@ -165,9 +165,6 @@ def histogram(dict_list: list, attribute: str) -> int:
     # Initializing histogram dictionary
     hist = {}
 
-    # initializing return result to -1
-    result = -1
-
     # Iterating thorugh input list of dictionaries
     for item in dict_list:
 
@@ -186,9 +183,6 @@ def histogram(dict_list: list, attribute: str) -> int:
     # Get list of keys
     keys = list(hist.keys())
 
-    # Initialize data for plotting in a list
-    data = []
-
     # setup plot title and y axis title
     plt.figure('Figure Histogram')
     plt.ylabel('Count')
@@ -197,25 +191,63 @@ def histogram(dict_list: list, attribute: str) -> int:
 
     # Checking to see if the key exists and if they are integers
     if len(keys) > 0 and type(keys[0]) is int:
+        # number of bins in histogram
+        NUM_OF_BINS: Final = 20
 
-        # Sort histogram bins in ascending order
+        # initialize bins
+        bins = NUM_OF_BINS * [0]
+
+        # initialize data
+        data = NUM_OF_BINS * [0]
+
+        # sort histogram bins in ascending order
         keys.sort()
-        # Assigning return result to the last/largest key
-        result = keys[len(keys) - 1]
+
+        # get bin width
+        bin_width = keys[len(keys) - 1] / NUM_OF_BINS
 
         # Generate 20 intervals for the bins in the histogram x axis
-        plt.xticks(np.arange(0, result + 1, result / 20))
+        ticks = np.arange(0, keys[len(keys) - 1] + 1, bin_width)
 
-    # Iterates over all keys
-    for key in keys:
-        # Fill up data list for the histogram
-        data.append(hist[key])
+        # assign horizontal ticks to the graph
+        plt.xticks(ticks)
 
-    # Plot data
-    plt.bar(keys, data)
-    plt.show()
+        # merge histogram data to to bins
+        for i in range(NUM_OF_BINS):
+            for key in keys:
+                if i < NUM_OF_BINS - 1:
+                    if key >= ticks[i] and key < ticks[i + 1]:
+                        data[i] += hist[key]
+                else:
+                    # handle the corner case of the last bin
+                    if key >= ticks[i] and key <= ticks[i + 1]:
+                        data[i] += hist[key]
 
-    # Return result
-    return result
+        # set centre of the bins for display
+        for i in range(len(ticks) - 1):
+            bins[i] = (ticks[i] + ticks[i + 1]) / 2
+
+        # display numeric histogram
+        plt.bar(bins, data, bin_width)
+        plt.show()
+
+        # return the highest value
+        return keys[len(keys) - 1]
+
+    else:
+        # Initialize data for plotting in a list
+        data = []
+
+        # match keys and data
+        for key in keys:
+            data.append(hist[key])
+
+        # display histogram
+        plt.bar(keys, data)
+        plt.show()
+
+        # return value for non numeric histogram
+        return -1
 
     # Do NOT include a main script in your submission
+
