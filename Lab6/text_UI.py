@@ -243,7 +243,7 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
             print("Invalid order.")
 
     # Get and print the polynomial equation
-    fitted_curve = curve_fit(fit_attribute, fit_order)
+    fitted_curve = curve_fit(data, fit_attribute, fit_order)
     print(fitted_curve)
         
 
