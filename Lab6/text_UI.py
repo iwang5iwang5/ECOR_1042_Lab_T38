@@ -130,6 +130,10 @@ def load_data_command() -> (list[dict], str):
         # Prompt user for attribute value
         attribute_value = int(input("Please enter the value of the attribute: "))
 
+    # Give the attribute value a placeholder value
+    elif attribute_filter == "ALL":
+        attribute_value = "If you see this you are super cool :D"
+
     # Inform user that data was loaded and return the loaded data
     print("Data loaded")
     return (m_avg(data_loader(filename, (attribute_filter, attribute_value))), attribute_filter)
@@ -222,8 +226,8 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
         # Prompt user for the order
         fit_order = input("Please enter the order of the polynomial to be fitted: ")
 
-        # Check if user input is a decimal number
-        if fit_order.isdecimal():
+        # Check if user input can be converted to an integer
+        try:
             fit_order = int(fit_order)
 
             # Insure that the order is a valid order for the data loaded
@@ -234,8 +238,8 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
             else:
                 print("Invalid order.")
 
-        # Inform user of an invalid order  
-        else:
+        # Inform user of an invalid order
+        except:
             print("Invalid order.")
 
     # Get and print the polynomial equation
