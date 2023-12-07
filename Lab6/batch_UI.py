@@ -125,7 +125,7 @@ def sort_command(e:list, data: list[dict]) -> list[dict]:
 #-------------------------------------------------------------------------------------------------
 
 def main_func() -> None:
-    """Return nothing or None type. Prompts user for instruction file and exicute all instruction
+    """Return nothing or None type. Prompts user for instruction file and execute all instruction
     in instruction file.
     """
 
