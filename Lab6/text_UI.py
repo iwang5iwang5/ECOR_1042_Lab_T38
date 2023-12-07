@@ -202,7 +202,7 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
     The user is prompted to input the arguments to be passed to the curve_fit function.
     These arguments are the following:
         - The attribute to compare M_AVG to
-        - The order of the fitted polynomial
+        - The order of the fitted polynomial (max degree 5)
     """
     # Get attribute to comapare M_AVG to
     valid_attribute = False
@@ -212,38 +212,38 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
         fit_attribute = input("Please enter the attribute you want to use to find the best fit for M_AVG: ").upper()
 
         # Check if input is a valid attribute
-        if fit_attribute != loaded_type and (fit_attribute == "MYCT" or fit_attribute == "MMIN" or fit_attribute == "MMAX" or fit_attribute == "CACH" or fit_attribute == "PRP" or fit_attribute == "ERP" or fit_attribute == "M_AVG"):
+        if fit_attribute != loaded_type and (fit_attribute == "MYCT" or fit_attribute == "MMIN" or fit_attribute == "MMAX" or fit_attribute == "CACH" or fit_attribute == "PRP" or fit_attribute == "ERP"):
             valid_attribute = True
 
         # Inform user of an invalid attribute
         else:
             print("Invalid attribute.")
 
-    # Get the order to fit the curve to
-    valid_order = False
-    while not valid_order:
+    # Get the degree to fit the curve to
+    valid_degree = False
+    while not valid_degree:
 
-        # Prompt user for the order
-        fit_order = input("Please enter the order of the polynomial to be fitted: ")
+        # Prompt user for the degree
+        fit_degree = input("Please enter the order of the polynomial to be fitted: ")
 
         # Check if user input can be converted to an integer
         try:
-            fit_order = int(fit_order)
+            fit_degree = int(fit_degree)
 
-            # Insure that the order is a valid order for the data loaded
-            if fit_order < len(data) and fit_order > 0:
-                valid_order = True
+            # Insure that the degree is a valid order for the data loaded
+            if fit_degree < len(data) and fit_degree <= 5 and fit_degree > 0:
+                valid_degree = True
 
-            # Inform user of an invalid order
+            # Inform user of an invalid degree
             else:
-                print("Invalid order.")
+                print("Invalid degree.")
 
-        # Inform user of an invalid order
+        # Inform user of an invalid degree
         except:
-            print("Invalid order.")
+            print("Invalid degree.")
 
     # Get and print the polynomial equation
-    fitted_curve = curve_fit(data, fit_attribute, fit_order)
+    fitted_curve = curve_fit(data, fit_attribute, fit_degree)
     print(fitted_curve)
         
 
