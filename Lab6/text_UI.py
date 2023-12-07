@@ -12,6 +12,8 @@ __team__ = "T-038"
 #==========================================#
 # Place your script for your text_UI after this line
 
+"""Examples on using the functions in this module can be found in the video demestration."""
+
 # Import load data and set it up for easier use later
 import load_data
 data_loader = load_data.load_data
@@ -21,7 +23,7 @@ m_avg = load_data.add_average_main_memory
 from sort import sort
 
 # Import the histogram function from the histogram file
-import histogram
+from histogram import histogram
 
 # Import the curve_fit function from the curve_fit file
 from curve_fit import curve_fit
@@ -34,8 +36,6 @@ def get_command() -> list[dict]:
         - Get a polynomial equation from the loaded data, the input for this command is "C"
         - Display a histogram using the loaded data, the input for this command is "H"
         - Exit the program, the input for this command is "E"
-
-    *Examples*
     """
     # Set up
     exit_command = False
@@ -100,8 +100,6 @@ def load_data_command() -> (list[dict], str):
     These arguments are the following:
         - Attribute to use as a filter when loading the data
         - The value of the filter used to load the data
-
-    *Examples*
     """
     # Prompt user to get name of file to load
     filename = input("Please enter the name of the file: ")
@@ -117,7 +115,7 @@ def load_data_command() -> (list[dict], str):
         if attribute_filter == "CACH" or attribute_filter == "MODEL" or attribute_filter == "PRP" or attribute_filter == "VENDOR" or attribute_filter == "ALL":
             valid_filter = True
         
-        # Inform user of an invaled filter inputed
+        # Inform user of an invalid filter inputed
         else: 
             print("Invalid filter key.")
     
@@ -144,8 +142,6 @@ def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
     These arguments are the following:
         - Attribute for which the list will be sorted by
         - The order that the list will be sorted in (Ascending or Descending)
-
-    *Examples*
     """
     # Get attribute to sort by
     valid_attribute = False
@@ -162,7 +158,7 @@ def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
         elif sorting_attribute == loaded_type:
             print("Attribute {} is not present in the loaded data.".format(loaded_type))
 
-        # Inform user of an invaled value attribute
+        # Inform user of an invalid attribute
         else:
             print("Invalid attribute.")
         
@@ -177,7 +173,7 @@ def sort_data_command(data: list[dict], loaded_type: str) -> list[dict]:
         if sorting_order == "A" or sorting_order == "D":
             valid_order = True
         
-        # Inform user of an invaled order
+        # Inform user of an invalid order
         else:
             print("Invalid order.")
         
@@ -201,65 +197,88 @@ def curve_fit_data_command(data: list[dict], loaded_type: str) -> None:
 
     The user is prompted to input the arguments to be passed to the curve_fit function.
     These arguments are the following:
-        - 
-        - 
-
-    *Examples*
+        - The attribute to compare M_AVG to
+        - The order of the fitted polynomial
     """
-    
+    # Get attribute to comapare M_AVG to
     valid_attribute = False
     while not valid_attribute:
         
+        # Prompt user for an attribute
         fit_attribute = input("Please enter the attribute you want to use to find the best fit for M_AVG: ").upper()
 
+        # Check if input is a valid attribute
         if fit_attribute != loaded_type and (fit_attribute == "MYCT" or fit_attribute == "MMIN" or fit_attribute == "MMAX" or fit_attribute == "CACH" or fit_attribute == "PRP" or fit_attribute == "ERP" or fit_attribute == "M_AVG"):
             valid_attribute = True
 
+        # Inform user of an invalid attribute
         else:
             print("Invalid attribute.")
 
+    # Get the order to fit the curve to
     valid_order = False
     while not valid_order:
 
+        # Prompt user for the order
         fit_order = input("Please enter the order of the polynomial to be fitted: ")
 
+        # Check if user input is a decimal number
         if fit_order.isdecimal():
             fit_order = int(fit_order)
 
+            # Insure that the order is a valid order for the data loaded
             if fit_order < len(data) and fit_order > 0:
                 valid_order = True
 
+            # Inform user of an invalid order
             else:
                 print("Invalid order.")
-            
+
+        # Inform user of an invalid order  
         else:
             print("Invalid order.")
 
+    # Get and print the polynomial equation
     fitted_curve = curve_fit(fit_attribute, fit_order)
     print(fitted_curve)
         
 
 def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
-    """
-    """
+    """Display a histogram of the values of a attributes.
 
+    The user is prompted to input the arguments to be passed to the histogram function.
+    These arguments are the following:
+        - The attribute to use for the histogram's values
+    """
+    # Get attribute for the histogram
     valid_attribute = False
     while not valid_attribute:
 
+        # Prompt user for an attribute
         histogram_attribute = input("Please enter the attribute you want to use for plotting: ").upper()
 
+        # Check if input is a valid attribute
         if loaded_type != histogram_attribute and (histogram_attribute == "MODEL" or histogram_attribute == "VENDOR" or histogram_attribute == "MYCT" or histogram_attribute == "MMIN" or histogram_attribute == "MMAX" or histogram_attribute == "CACH" or histogram_attribute == "PRP" or histogram_attribute == "ERP" or histogram_attribute == "M_AVG"):
             valid_attribute = True
 
+            # Vendor is fixed to be what the function expects
             if histogram_attribute == "VENDOR":
                 histogram_attribute = "Vendor"
         
+            # Model is fixed to be what the function expects
             elif histogram_attribute == "MODEL":
                 histogram_attribute = "Model"
 
+        # Inform user of an invalid attribute
         else:
             print("Invalid attribute.")
-                                                        # vvvv Fixed
-    temp = histogram.histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings), need to fix loaded data to do this
+            
+    # Get and display the histogram
+    histogram(data, histogram_attribute)
 
+#-------------------------------------------------------------------------------------------------
+#start of main funtion
+#-------------------------------------------------------------------------------------------------
+
+# Start the UI, to start prompting the user
 get_command()
