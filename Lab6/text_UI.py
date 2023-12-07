@@ -21,7 +21,7 @@ m_avg = load_data.add_average_main_memory
 from sort import sort
 
 # Import the histogram function from the histogram file
-import histogram
+from histogram import histogram
 
 # Import the curve_fit function from the curve_fit file
 from curve_fit import curve_fit
@@ -260,6 +260,6 @@ def histogram_of_data_command(data: list[dict], loaded_type: str) -> None:
         else:
             print("Invalid attribute.")
                                                         # vvvv Fixed
-    temp = histogram.histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings), need to fix loaded data to do this
+    histogram(data, histogram_attribute) # Vendor and Model not working ;-;, to fix we need to make sure that all names are of the same type (i.e. all strings), need to fix loaded data to do this
 
 get_command()
