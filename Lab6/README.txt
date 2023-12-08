@@ -107,6 +107,8 @@ go to the target folder and run Python.
 
 ## Usage:
 
+https://drive.google.com/file/d/1QPth4TMfP93zFAi5YwzwuCMoXtHbFL4r/view?usp=drive_link
+
 ## Credits: 
 	
 load_data.py - Esosa Ohangbon, Lance Downton, Ivan Wang, Stefan Martincevic
