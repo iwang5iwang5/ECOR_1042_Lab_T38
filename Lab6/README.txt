@@ -2,7 +2,9 @@
 
 ## Date: 2023-12-08
 ## Software's Name and Version: Data Fitter 1.0
-## Contact Infromation: StefanMartincevic@cmail.carleton.ca
+## Contact Infromation: 
+
+Email of Stefan Martincevic: StefanMartincevic@cmail.carleton.ca
 
 ## Description: 
 
