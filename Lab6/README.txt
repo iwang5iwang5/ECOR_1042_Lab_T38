@@ -1,6 +1,9 @@
 Lab 6: Optimization, User Interfaces, README
 
 ## Date: 2023-12-08
+# Title: Lab 6: Optimization, User Interfaces, README
+
+## Date: 2023-12-08
 ## Software's Name and Version: Data Fitter 1.0
 ## Contact Infromation: StefanMartincevic@cmail.carleton.ca
 
@@ -31,7 +34,7 @@ Batch_User - Ivan Wang
 
 MIT License 
 
-Copyright (c) [year] [fullname]
+Copyright (c) [2023] [Stefan Martincevic]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -49,5 +52,5 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.		
+SOFTWARE.	
 
