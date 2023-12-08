@@ -1,4 +1,8 @@
 L;machine.csv;Vendor;amdahl
 S;CACH;D;N
 H;PRP
-C;CACH;1
+
+
+
+
+[["L","machine.csv","Vendor","amdahl"], "S;CACH;D;N", "H;PRP"]
