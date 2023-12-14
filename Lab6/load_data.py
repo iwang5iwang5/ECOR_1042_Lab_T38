@@ -326,13 +326,19 @@ def load_data(filename: str, filter: tuple) -> list[dict]:
 
                 for i in range(len(headers)):
 
-                    try:
-
-                        value = int(values[i])
-
-                    except:
+                    if i == 0 or i == 1:
 
                         value = values[i]
+                    
+                    else:
+
+                        try:
+
+                            value = int(values[i])
+
+                        except:
+
+                            value = values[i]
 
                     data[headers[i]] = value
                 
