@@ -1,8 +1,5 @@
 L;machine.csv;Vendor;amdahl
-S;CACH;D;N
-H;PRP
-
-
-
-
-[["L","machine.csv","Vendor","amdahl"], "S;CACH;D;N", "H;PRP"]
+S;CACH;D;Y
+S;PRP;A;N
+H;MMIN
+C;MMIN;2
